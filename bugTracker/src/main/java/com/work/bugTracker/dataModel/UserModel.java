@@ -1,12 +1,12 @@
 package com.work.bugTracker.dataModel;
 
-public class user {
+public class UserModel {
     private long UID;
     private String userName;
     private String userPassword; //will be converted to sha256 later
     private int userType; // 0 for developer, 1 for tester
 
-    public user(long UID, String userName, String userPassword, int userType) {
+    public UserModel(long UID, String userName, String userPassword, int userType) {
         this.UID = UID;
         this.userName = userName;
         this.userPassword = userPassword;
