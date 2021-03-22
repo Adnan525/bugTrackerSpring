@@ -27,7 +27,7 @@ public class BugModel {
             updatable = false,
             nullable = false
     )
-    private long bugID; //pk
+    private Long bugID; //pk
     @Column(
             nullable = false,
             columnDefinition = "TEXT"

@@ -1,13 +1,41 @@
 package com.work.bugTracker.dataModel;
 
-public class UserModel {
-    private long UID;
-    private String userName;
-    private String userPassword; //will be converted to sha256 later
-    private int userType; // 0 for developer, 1 for tester
+import javax.persistence.*;
 
-    public UserModel(long UID, String userName, String userPassword, int userType) {
-        this.UID = UID;
+@Table(
+        name = "user"
+)
+@Entity
+public class UserModel {
+
+    @Id
+    @SequenceGenerator(
+            name = "uid_sequence",
+            sequenceName = "uid_sequence",
+            initialValue = 1,
+            allocationSize = 1
+    )
+    @GeneratedValue(
+            strategy = GenerationType.SEQUENCE,
+            generator = "uid_sequence"
+    )
+    private Long UID; //pk
+    @Column(
+            nullable = false,
+            columnDefinition = "TEXT"
+    )
+    private String userName;
+    @Column(
+            nullable = false,
+            columnDefinition = "TEXT"
+    )
+    private String userPassword; //will be converted to sha256 later
+    @Column(
+            nullable = false
+    )
+    private int userType; // 0 for developer, any for tester
+
+    public UserModel(String userName, String userPassword, int userType) {
         this.userName = userName;
         this.userPassword = userPassword;
         this.userType = userType;
