@@ -1,18 +1,22 @@
 package com.work.bugTracker;
 
+import com.work.bugTracker.dataModel.BugModel;
 import com.work.bugTracker.dataModel.UserModel;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
-import org.springframework.context.annotation.Bean;
+import org.springframework.stereotype.Component;
 
-public class Config
-{
-    @Bean
-    CommandLineRunner cmdRunner(OperationUser opUser)
-    {
-        return args->opUser.save(
-                new UserModel("admin",
-                        "admin",
-                        0)
-        );
+@Component
+public class Config implements CommandLineRunner {
+    @Autowired
+    private OperationUser opUser;
+
+    @Override
+    public void run(String... args) throws Exception {
+        System.out.println("run executed");
+        UserModel user = new UserModel(
+                "admin","admin", 0);
+        opUser.save(user);
+
     }
 }

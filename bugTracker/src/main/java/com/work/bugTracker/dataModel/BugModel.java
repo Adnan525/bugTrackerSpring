@@ -15,7 +15,7 @@ public class BugModel {
     @SequenceGenerator(
             name = "bugID_sequence",
             sequenceName = "bugID_sequence",
-            initialValue = 0,
+            initialValue = 1,
             allocationSize = 1
     )
     @GeneratedValue(

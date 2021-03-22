@@ -3,7 +3,7 @@ package com.work.bugTracker.dataModel;
 import javax.persistence.*;
 
 @Table(
-        name = "user"
+        name = "trackerUsers"
 )
 @Entity
 public class UserModel {
@@ -20,19 +20,8 @@ public class UserModel {
             generator = "uid_sequence"
     )
     private Long UID; //pk
-    @Column(
-            nullable = false,
-            columnDefinition = "TEXT"
-    )
     private String userName;
-    @Column(
-            nullable = false,
-            columnDefinition = "TEXT"
-    )
     private String userPassword; //will be converted to sha256 later
-    @Column(
-            nullable = false
-    )
     private int userType; // 0 for developer, any for tester
 
     public UserModel(String userName, String userPassword, int userType) {
@@ -40,15 +29,6 @@ public class UserModel {
         this.userPassword = userPassword;
         this.userType = userType;
     }
-
-    public long getUID() {
-        return UID;
-    }
-
-    public void setUID(long UID) {
-        this.UID = UID;
-    }
-
     public String getUserName() {
         return userName;
     }
