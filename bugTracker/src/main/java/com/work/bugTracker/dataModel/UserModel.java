@@ -55,9 +55,9 @@ public class UserModel implements UserDetails {
         this.userPassword = userPassword;
     }
 
-//    public int getUserType() {
-//        return userType;
-//    }
+    public String getUserType() {
+        return userType;
+    }
 //    public void setUserType(int userType) {
 //        this.userType = userType;
 //    }

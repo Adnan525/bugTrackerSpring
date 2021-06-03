@@ -7,6 +7,8 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
+import javax.swing.plaf.synth.SynthEditorPaneUI;
+
 @Service
 public class AuthService implements UserDetailsService {
 
@@ -14,6 +16,9 @@ public class AuthService implements UserDetailsService {
     RepositoryUser opUser;
     @Override
     public UserDetails loadUserByUsername(String userName) throws UsernameNotFoundException {
-        return opUser.findByUserName("userName");
+//        UserDetails temp = opUser.findByUserName(userName);
+//        System.out.println("user found:"+temp.getUsername()+" password:"+temp.getPassword()+" with type:"+temp.getAuthorities().toString());
+//        return temp;
+        return opUser.findByUserName(userName);
     }
 }

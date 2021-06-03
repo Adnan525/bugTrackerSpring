@@ -14,9 +14,9 @@ public class Config implements CommandLineRunner {
     public void run(String... args) throws Exception {
         System.out.println("run executed");
         UserModel AdminUser = new UserModel(
-                "developer","developer", "admin");
+                "developer","developer", "ROLE_admin");
         UserModel TesterUser = new UserModel(
-                "tester","tester", "tester");
+                "tester","tester", "ROLE_tester");
         opUser.save(AdminUser);
         opUser.save(TesterUser);
     }
