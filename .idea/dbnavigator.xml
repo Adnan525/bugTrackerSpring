@@ -26,7 +26,7 @@
     <show-object-properties value="true" />
     <loaded-nodes>
       <connection connection-id="0abe80e2-b20a-4e3c-ae1c-bdf1e7efffb6">
-        <schema name="public" object-types="function, dataset trigger, sequence, index, column, table, view, constraint" />
+        <schema name="public" object-types="index, table, dataset trigger, function, column, constraint, view, sequence" />
       </connection>
     </loaded-nodes>
   </component>
@@ -43,6 +43,7 @@
   </component>
   <component name="DBNavigator.Project.DatasetFilterManager">
     <filter-actions connection-id="0abe80e2-b20a-4e3c-ae1c-bdf1e7efffb6" dataset="public.bugs" active-filter-id="" />
+    <filter-actions connection-id="0abe80e2-b20a-4e3c-ae1c-bdf1e7efffb6" dataset="public.tracker_users" active-filter-id="" />
   </component>
   <component name="DBNavigator.Project.EditorStateManager">
     <last-used-providers />
@@ -72,7 +73,7 @@
     <connections>
       <connection id="0abe80e2-b20a-4e3c-ae1c-bdf1e7efffb6" active="true">
         <database>
-          <name value="testDB" />
+          <name value="testPostgres" />
           <description value="" />
           <database-type value="POSTGRES" />
           <config-type value="BASIC" />
