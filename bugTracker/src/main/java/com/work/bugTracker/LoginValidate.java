@@ -15,6 +15,8 @@ import org.springframework.stereotype.Service;
 public class LoginValidate extends WebSecurityConfigurerAdapter {
     @Autowired
     UserDetailsService authService;
+    @Autowired
+    private LoginHandler custHandler;
     @Override
     protected void configure(AuthenticationManagerBuilder auth) throws Exception {
         auth.userDetailsService(authService);
@@ -22,10 +24,22 @@ public class LoginValidate extends WebSecurityConfigurerAdapter {
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
+
         http.authorizeRequests()
+                .antMatchers("/").permitAll()
+                .antMatchers("/login").permitAll()
                 .antMatchers("/admin").hasRole("admin")
-                .antMatchers("/user").hasRole("tester")
-                .antMatchers("/").permitAll().and().formLogin();
+                .antMatchers("/tester").hasRole("tester")
+                .and()
+                .formLogin()
+                .loginPage("/login.html")
+                //.defaultSuccessUrl("/index", true)
+                .successHandler(custHandler)
+                .failureUrl("/login-error.html");
+//        http.authorizeRequests()
+//                .antMatchers("/admin").hasRole("admin")
+//                .antMatchers("/user").hasRole("tester")
+//                .antMatchers("/").permitAll().and().formLogin();
     }
 
     //not sure
