@@ -9,14 +9,13 @@ import org.springframework.security.config.annotation.web.configuration.WebSecur
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.password.NoOpPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
-import org.springframework.stereotype.Service;
 
 @EnableWebSecurity
 public class LoginValidate extends WebSecurityConfigurerAdapter {
     @Autowired
     UserDetailsService authService;
     @Autowired
-    private LoginHandler custHandler;
+    private CustomLoginHandler custHandler;
     @Override
     protected void configure(AuthenticationManagerBuilder auth) throws Exception {
         auth.userDetailsService(authService);
@@ -30,12 +29,19 @@ public class LoginValidate extends WebSecurityConfigurerAdapter {
                 .antMatchers("/login").permitAll()
                 .antMatchers("/admin").hasRole("admin")
                 .antMatchers("/tester").hasRole("tester")
+                .antMatchers("/addUser").hasAnyRole("admin", "tester")
                 .and()
                 .formLogin()
                 .loginPage("/login.html")
                 //.defaultSuccessUrl("/index", true)
                 .successHandler(custHandler)
                 .failureUrl("/login-error.html");
+        
+        //to access from postman
+//                .and()
+//                .csrf().disable();
+
+
 //        http.authorizeRequests()
 //                .antMatchers("/admin").hasRole("admin")
 //                .antMatchers("/user").hasRole("tester")

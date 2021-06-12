@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html xmlns:th="https://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <title></title>
@@ -7,15 +7,23 @@
 <body>
 <h1>This is bugtracker Admin</h1>
 <br>
-<h3> Add a user </h3>
-<form action="/adduser">
-    <label for="userName">Name:</label><br>
-    <input type="text" id="userName" name="userName"><br>
-    <label for="userPassword">Password :</label><br>
-    <input type="text" id="userPassword" name="userPassword"><br>
-    <label for="userType">Type:</label><br>
-    <input type="text" id="userType" name="userType"><br>
-    <input type="submit" value="Add User">
+<h3> Add a bug </h3>
+<p th:if="${bugadded}">======New Bug Added======</p>
+<!--<form action="/addUser" enctype="application/json" object="${greeting}method = "post">-->
+<!--    <label for="userName">Name:</label><br>-->
+<!--    <input type="text" id="userName" name="userName"><br>-->
+<!--    <label for="userPassword">Password :</label><br>-->
+<!--    <input type="text" id="userPassword" name="userPassword"><br>-->
+<!--    <label for="userType">Type:</label><br>-->
+<!--    <input type="text" id="userType" name="userType"><br>-->
+<!--    <input type="submit" value="Add User">-->
+<!--</form>-->
+<form action="#" th:action="@{/addbug}" th:object="${bug}" method="post">
+    <p>Unique BugName: <input type="text" th:field="*{bugName}" /></p>
+    <p>Descriptin: <input type="text" th:field="*{bugDescription}"/></p>
+    <p>Assigned user ID: <input type="text" th:field="*{UID}"/></p>
+    <p>Bug Status: <input type="text" th:field="*{status}"/></p>
+    <p><input type="submit" value="Submit" /> <input type="reset" value="Reset" /></p>
 </form>
 
 </body>

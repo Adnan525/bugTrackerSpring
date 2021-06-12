@@ -24,11 +24,24 @@
     <autoscroll-to-editor value="false" />
     <autoscroll-from-editor value="true" />
     <show-object-properties value="true" />
-    <loaded-nodes />
+    <loaded-nodes>
+      <connection connection-id="0abe80e2-b20a-4e3c-ae1c-bdf1e7efffb6">
+        <schema name="information_schema" object-types="function" />
+        <schema name="pg_catalog" object-types="function" />
+        <schema name="public" object-types="table, view, sequence, function, constraint, index, column, dataset trigger" />
+      </connection>
+    </loaded-nodes>
   </component>
   <component name="DBNavigator.Project.DatabaseConsoleManager">
     <connection id="0abe80e2-b20a-4e3c-ae1c-bdf1e7efffb6">
-      <console name="testDB" type="STANDARD" schema="information_schema" session="Main"><![CDATA[select * from "public".tracker_users;]]></console>
+      <console name="testDB" type="STANDARD" schema="information_schema" session="Main"><![CDATA[select * from "public".tracker_users;
+select
+    b.bug_description,
+    b.bug_name,
+    b.status,
+    b.uid
+from
+    "public".bugs b;]]></console>
     </connection>
   </component>
   <component name="DBNavigator.Project.DatabaseFileManager">
