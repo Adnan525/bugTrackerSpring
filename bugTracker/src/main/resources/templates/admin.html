@@ -6,6 +6,9 @@
 </head>
 <body>
 <h1 style="text-align:center">This is bugtracker Admin</h1>
+<h3 style="text-align:center"th:text="${'Logged in as : '+ #httpServletRequest.remoteUser}">
+    static_content
+</h3>
 <br>
 <h3> Add a bug </h3>
 <p th:if="${bugadded}">======New Bug Added======</p>
