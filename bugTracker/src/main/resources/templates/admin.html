@@ -37,8 +37,26 @@
 </form>
 
 <br>
+<!--<p th:text="'Hello, ' + ${name} + '!'" />-->
 <h3> List of all bugs </h3>
-<p th:text="'Hello, ' + ${name} + '!'" />
 
+<table border="1">
+    <thead>
+        <tr>
+            <td width="20px"><b>Bug Name</b> </td>
+            <td><b>Description</b> </td>
+            <td><b>UID</b> </td>
+            <td><b>Status</b></td>
+        </tr>
+    </thead>
+    <tbody>
+        <tr th:each="bug:${allbugs}">
+            <td th:text="${bug.bugName}"></td>
+            <td th:text="${bug.bugDescription}"></td>
+            <td th:text="${bug.UID}"></td>
+            <td th:text="${bug.status}"></td>
+        </tr>
+    </tbody>
+</table>
 </body>
 </html>

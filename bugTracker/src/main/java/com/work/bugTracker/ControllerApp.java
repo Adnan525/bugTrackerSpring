@@ -46,17 +46,17 @@ public class ControllerApp {
         return new RedirectView("/login");
     }
 
-    @GetMapping("/greeting")
-    public String greeting(@RequestParam(name="name", required=false, defaultValue="World") String name, Model model) {
-        model.addAttribute("name", name);
-        return "greeting";
-    }
+//    @GetMapping("/greeting")
+//    public String greeting(@RequestParam(name="name", required=false, defaultValue="World") String name, Model model) {
+//        model.addAttribute("name", name);
+//        return "greeting";
+//    }
 
     @GetMapping("/admin")
-    public String admin(@RequestParam(name = "listbug", required = false, defaultValue = "connection lost to database, refresh page") Model model)
+    public String admin(Model model)
     {
-//        List<BugModel> allBugs = repoBug.findAll();
-//        model.addAttribute("listBug", allBugs.size()+" bug(s) have been reported");
+        List<BugModel> allBugs = repoBug.findAll();
+        model.addAttribute("allbugs", allBugs);
         model.addAttribute("bug", new BugModel());
         model.addAttribute("user", new PrimUser());
         return "admin";

@@ -4,6 +4,9 @@ public class PrimUser {
     private String name;
     private String password;
 
+    public PrimUser() {
+    }
+
     public String getName() {
         return name;
     }
