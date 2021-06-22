@@ -3,24 +3,13 @@ package com.work.bugTracker.dataModel;
 
 import javax.persistence.*;
 
-@Table(
-        name = "bugs"
-)
+@Table(name = "bugs")
 
 @Entity
 public class BugModel {
     @Id
     private String bugName;
     private String bugDescription;
-
-    public String getUID() {
-        return UID;
-    }
-
-    public void setUID(String UID) {
-        this.UID = UID;
-    }
-
     private String UID; //user who created the bug
     private String status; // 0 = solved, any other number = active,
 
@@ -32,6 +21,14 @@ public class BugModel {
         this.bugDescription = bugDescription;
         this.UID = UID;
         this.status = "active";
+    }
+
+    public String getUID() {
+        return UID;
+    }
+
+    public void setUID(String UID) {
+        this.UID = UID;
     }
 
     public String getBugName() {

@@ -5,7 +5,7 @@
     <title></title>
 </head>
 <body>
-<h1>This is bugtracker Admin</h1>
+<h1 style="text-align:center">This is bugtracker Admin</h1>
 <br>
 <h3> Add a bug </h3>
 <p th:if="${bugadded}">======New Bug Added======</p>
@@ -23,8 +23,22 @@
     <p>Descriptin: <input type="text" th:field="*{bugDescription}"/></p>
     <p>Assigned user ID: <input type="text" th:field="*{UID}"/></p>
     <p>Bug Status: <input type="text" th:field="*{status}"/></p>
-    <p><input type="submit" value="Submit" /> <input type="reset" value="Reset" /></p>
+    <p><input type="submit" value="Add Bug" /> <input type="reset" value="Reset" /></p>
 </form>
+
+<br>
+<h3> Add a user </h3>
+<p th:if="${useradded}">======New User Added======</p>
+<form action="#" th:action="@{/adduser}" th:object="${user}" method="post">
+    <p>User Name: <input type="text" th:field="*{name}" /></p>
+    <p>User Password: <input type="text" th:field="*{password}"/></p>
+    <p>User Type: <input type="text" th:field="*{type}"/></p>
+    <p><input type="submit" value="Add user" /> <input type="reset" value="Reset" /></p>
+</form>
+
+<br>
+<h3> List of all bugs </h3>
+<p th:text="'Hello, ' + ${name} + '!'" />
 
 </body>
 </html>

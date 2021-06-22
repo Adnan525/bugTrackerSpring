@@ -1,15 +1,11 @@
 package com.work.bugTracker;
 
-import com.work.bugTracker.dataModel.UserModel;
+import com.work.bugTracker.repository.RepositoryUser;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.annotation.Bean;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
-import org.springframework.security.web.authentication.AuthenticationSuccessHandler;
 import org.springframework.stereotype.Service;
-
-import javax.swing.plaf.synth.SynthEditorPaneUI;
 
 @Service
 public class AuthService implements UserDetailsService {

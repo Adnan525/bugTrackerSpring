@@ -27,7 +27,7 @@ public class LoginValidate extends WebSecurityConfigurerAdapter {
         http.authorizeRequests()
                 .antMatchers("/").permitAll()
                 .antMatchers("/login").permitAll()
-                .antMatchers("/admin").hasRole("admin")
+                .antMatchers("/admin").permitAll()
                 .antMatchers("/tester").hasRole("tester")
                 .antMatchers("/addUser").hasAnyRole("admin", "tester")
                 .and()
@@ -36,7 +36,7 @@ public class LoginValidate extends WebSecurityConfigurerAdapter {
                 //.defaultSuccessUrl("/index", true)
                 .successHandler(custHandler)
                 .failureUrl("/login-error.html");
-        
+
         //to access from postman
 //                .and()
 //                .csrf().disable();

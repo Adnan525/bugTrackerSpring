@@ -1,6 +1,7 @@
 package com.work.bugTracker;
 
 import com.work.bugTracker.dataModel.UserModel;
+import com.work.bugTracker.repository.RepositoryUser;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;

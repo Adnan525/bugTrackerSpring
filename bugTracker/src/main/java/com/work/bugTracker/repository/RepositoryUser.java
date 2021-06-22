@@ -1,4 +1,4 @@
-package com.work.bugTracker;
+package com.work.bugTracker.repository;
 
 import com.work.bugTracker.dataModel.UserModel;
 import org.springframework.context.annotation.Configuration;
