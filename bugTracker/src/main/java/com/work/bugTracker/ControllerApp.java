@@ -4,12 +4,20 @@ import com.work.bugTracker.dataModel.BugModel;
 import com.work.bugTracker.dataModel.PrimUser;
 import com.work.bugTracker.repository.RepositoryBug;
 import com.work.bugTracker.repository.RepositoryUser;
+import org.hibernate.cache.spi.support.CollectionReadOnlyAccess;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.view.RedirectView;
 
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import java.security.Principal;
 import java.util.List;
 
 @Controller
@@ -62,12 +70,15 @@ public class ControllerApp {
         return "admin";
     }
     @PostMapping("/addbug")
-    public RedirectView addBug(@ModelAttribute BugModel bug, Model model)
+    public RedirectView addBug(@ModelAttribute BugModel bug, Model model, HttpServletRequest request)
     {
         model.addAttribute("bug", bug);
         repoBug.save(bug);
         model.addAttribute("bugadded", true);
-        return new RedirectView("/admin");
+        if(request.isUserInRole("ROLE_admin"))
+            return new RedirectView("/admin");
+        else
+            return new RedirectView("/tester");
     }
 
     @PostMapping("/adduser")
@@ -92,8 +103,20 @@ public class ControllerApp {
 //    }
 
     @GetMapping("/tester")
-    public String tester()
+    public String tester(Model model, Authentication auth)
     {
+        UserDetails userDetails = (UserDetails) auth.getPrincipal();
+//        Principal principal = request.getUserPrincipal();
+        String allocatedUser = userDetails.getUsername();
+        System.out.println("===============> user : "+allocatedUser);
+        List<BugModel> assignedBugs = repoBug.findByUID(allocatedUser);
+        System.out.println("===============> Listing bugs");
+        for (BugModel b : assignedBugs) {
+            System.out.println("===============> "+b.getBugName());
+
+        }
+        model.addAttribute("bug", new BugModel());
+        model.addAttribute("assignedBugs", assignedBugs);
         return "tester";
     }
 

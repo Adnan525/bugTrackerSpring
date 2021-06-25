@@ -12,15 +12,6 @@
 <br>
 <h3> Add a bug </h3>
 <p th:if="${bugadded}">======New Bug Added======</p>
-<!--<form action="/addUser" enctype="application/json" object="${greeting}method = "post">-->
-<!--    <label for="userName">Name:</label><br>-->
-<!--    <input type="text" id="userName" name="userName"><br>-->
-<!--    <label for="userPassword">Password :</label><br>-->
-<!--    <input type="text" id="userPassword" name="userPassword"><br>-->
-<!--    <label for="userType">Type:</label><br>-->
-<!--    <input type="text" id="userType" name="userType"><br>-->
-<!--    <input type="submit" value="Add User">-->
-<!--</form>-->
 <form action="#" th:action="@{/addbug}" th:object="${bug}" method="post">
     <p>Unique BugName: <input type="text" th:field="*{bugName}" /></p>
     <p>Descriptin: <input type="text" th:field="*{bugDescription}"/></p>
@@ -35,14 +26,13 @@
 <form action="#" th:action="@{/adduser}" th:object="${user}" method="post">
     <p>User Name: <input type="text" th:field="*{name}" /></p>
     <p>User Password: <input type="text" th:field="*{password}"/></p>
-    <p>User Type: <input type="text" th:field="*{type}"/></p>
+    <p>User Type with "ROLE_" keyword: <input type="text" th:field="*{type}"/></p>
     <p><input type="submit" value="Add user" /> <input type="reset" value="Reset" /></p>
 </form>
 
 <br>
 <!--<p th:text="'Hello, ' + ${name} + '!'" />-->
 <h3> List of all bugs </h3>
-
 <table border="1">
     <thead>
         <tr>
@@ -63,3 +53,15 @@
 </table>
 </body>
 </html>
+
+
+
+<!--<form action="/addUser" enctype="application/json" object="${greeting}method = "post">-->
+<!--    <label for="userName">Name:</label><br>-->
+<!--    <input type="text" id="userName" name="userName"><br>-->
+<!--    <label for="userPassword">Password :</label><br>-->
+<!--    <input type="text" id="userPassword" name="userPassword"><br>-->
+<!--    <label for="userType">Type:</label><br>-->
+<!--    <input type="text" id="userType" name="userType"><br>-->
+<!--    <input type="submit" value="Add User">-->
+<!--</form>-->

@@ -5,6 +5,36 @@
     <title></title>
 </head>
 <body>
-<h1 style="text-align:center">this is bugtracker tester</h1>
+    <h1 style="text-align:center">this is bugtracker tester</h1>
+    <h3 style="text-align:center"th:text="${'Logged in as : '+ #httpServletRequest.remoteUser}">
+        static_content
+    </h3>
+
+    <h3> Add a new bug </h3>
+    <form action="#" th:action="@{/addbug}" th:object="${bug}" method="post">
+        <p>Unique BugName: <input type="text" th:field="*{bugName}" /></p>
+        <p>Descriptin: <input type="text" th:field="*{bugDescription}"/></p>
+        <p>Assigned user ID: <input type="text" th:field="*{UID}"/></p>
+        <p>Bug Status: <input type="text" th:field="*{status}"/></p>
+        <p><input type="submit" value="Add Bug" /> <input type="reset" value="Reset" /></p>
+    </form>
+
+    <h3> Assigned bugs </h3>
+    <table border="1">
+        <thead>
+        <tr>
+            <td width="20px"><b>Bug Name</b> </td>
+            <td><b>Description</b> </td>
+            <td><b>Status</b></td>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="assignbug:${assignedBugs}">
+            <td th:text="${assignbug.bugName}"></td>
+            <td th:text="${assignbug.bugDescription}"></td>
+            <td th:text="${assignbug.status}"></td>
+        </tr>
+        </tbody>
+    </table>
 </body>
 </html>

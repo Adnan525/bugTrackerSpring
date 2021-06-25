@@ -17,21 +17,8 @@ import java.util.List;
 )
 @Entity
 public class UserModel implements UserDetails {
-    public UserModel() {
-        super();
-    }
+
     @Id
-    @SequenceGenerator(
-            name = "uid_sequence",
-            sequenceName = "uid_sequence",
-            initialValue = 1,
-            allocationSize = 1
-    )
-    @GeneratedValue(
-            strategy = GenerationType.SEQUENCE,
-            generator = "uid_sequence"
-    )
-    private Long UID; //pk
     private String userName;
     private String userPassword; //will be converted to sha256 later
     private String userType; // 0 for developer, any for tester
@@ -40,6 +27,9 @@ public class UserModel implements UserDetails {
     private boolean isAccountNonLocked;
     private boolean isAccountNonExpired;
 
+    public UserModel() {
+        super();
+    }
     public UserModel(String userName, String userPassword, String userType) {
         this.userName = userName;
         this.userPassword = userPassword;

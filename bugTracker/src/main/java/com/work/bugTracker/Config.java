@@ -23,9 +23,13 @@ public class Config implements CommandLineRunner {
                 "developer","developer", "ROLE_admin");
         UserModel TesterUser = new UserModel(
                 "tester","tester", "ROLE_tester");
-        BugModel testBug = new BugModel("TestBug", "this is a test bug", "001");
+        BugModel testBug1 = new BugModel("TestBug1", "this is a test bug", "tester");
+        BugModel testBug2 = new BugModel("TestBug2", "this is a test bug", "tester");
+        BugModel testBug3 = new BugModel("TestBug3", "this is a test bug", "tester");
         opUser.save(AdminUser);
         opUser.save(TesterUser);
-        bugRepo.save(testBug);
+        bugRepo.save(testBug1);
+        bugRepo.save(testBug2);
+        bugRepo.save(testBug3);
     }
 }
