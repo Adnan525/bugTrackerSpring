@@ -9,6 +9,7 @@ import org.springframework.security.config.annotation.web.configuration.WebSecur
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.password.NoOpPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 
 @EnableWebSecurity
 public class LoginValidate extends WebSecurityConfigurerAdapter {
@@ -36,7 +37,10 @@ public class LoginValidate extends WebSecurityConfigurerAdapter {
                 .loginPage("/login.html")
                 //.defaultSuccessUrl("/index", true)
                 .successHandler(custHandler)
-                .failureUrl("/login-error.html");
+                .failureUrl("/login-error.html")
+                .and()
+                .logout().logoutRequestMatcher(new AntPathRequestMatcher("/logout"))
+                .logoutSuccessUrl("/login");
 
         //to access from postman
 //                .and()

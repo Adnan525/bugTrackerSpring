@@ -48,6 +48,12 @@ public class ControllerApp {
         return "index";
     }
 
+//    @GetMapping("/logout")
+//    public String logout()
+//    {
+//        return "index";
+//    }
+
     @GetMapping("/")
     public RedirectView home()
     {
